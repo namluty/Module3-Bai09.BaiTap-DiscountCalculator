@@ -13,10 +13,11 @@ public class DiscountCalculator extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        double price = Float.parseFloat(request.getParameter("price"));
-        double percent = Float.parseFloat(request.getParameter("percent"));
+        double price = Double.parseDouble(request.getParameter("price"));
+        double percent = Double.parseDouble(request.getParameter("percent"));
         String description = request.getParameter("description");
-        double discount = (double) (price * percent * 0.01);
+        double discount = (price * percent * 0.01);
+
         PrintWriter writer = response.getWriter();
         writer.println("<html>");
         writer.println("<h2>Description: " + description + "</h2>");
